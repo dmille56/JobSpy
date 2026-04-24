@@ -91,13 +91,13 @@ class DiceScraper(Scraper):
 
         if self.scraper_input.job_type:
             job_type_map = {
-                JobType.FULL_TIME: "fulltime",
-                JobType.PART_TIME: "parttime",
-                JobType.CONTRACT: "contract",
-                JobType.INTERNSHIP: "internship",
+                JobType.FULL_TIME: "FULLTIME",
+                JobType.PART_TIME: "PARTTIME",
+                JobType.CONTRACT: "CONTRACTS",
+                JobType.INTERNSHIP: "INTERNSHIP",
             }
             if emp_type := job_type_map.get(self.scraper_input.job_type):
-                params["employmentType"] = emp_type
+                params["employmentTypes"] = emp_type
 
         if self.scraper_input.is_remote:
             params["workFromHome"] = "true"
