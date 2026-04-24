@@ -49,7 +49,7 @@
             };
           in
           {
-            pythonPackages = prev.pythonPackages // {
+            python3Packages = prev.python3Packages // {
               jobspy = pkgs.poetry2nix.mkPoetryEnv {
                 projectDir = self;
                 preferWheels = true;
