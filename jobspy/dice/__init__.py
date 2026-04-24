@@ -172,7 +172,7 @@ class DiceScraper(Scraper):
         date_posted = self._parse_date(context)
         
         # If no location in list, fetch detail page for more data
-        if (not city or not state) and "remote" not in self.scraper_input.location.lower():
+        if (not city or not state) and self.scraper_input.location and "remote" not in self.scraper_input.location.lower():
             try:
                 detail_html = self.session.get(job_url).text
                 city, state = self._parse_detail_location(detail_html)
