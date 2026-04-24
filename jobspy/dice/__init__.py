@@ -102,6 +102,14 @@ class DiceScraper(Scraper):
         if self.scraper_input.is_remote:
             params["workFromHome"] = "true"
 
+        if self.scraper_input.hours_old:
+            if self.scraper_input.hours_old <= 24:
+                params["postedDate"] = "Today"
+            elif self.scraper_input.hours_old <= 72:
+                params["postedDate"] = "Last 3 Days"
+            else:
+                params["postedDate"] = "Last 7 Days"
+
         return params
 
     def _parse_jobs(self, html: str) -> list[JobPost]:
